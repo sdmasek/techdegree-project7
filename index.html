@@ -5,14 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/styles.css" rel="stylesheet">
     <link href="css/normalize.css" rel="stylesheet">
+    <link href="css/toggle-switch.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
     <title>Web App Dashboard</title>
 </head>
 
-<body>
-    <header>
-        <h1>WebApp(TM)</h1>
+<body class="grid-container">
+    <header class="header">
+        <h1 class="main-title">WebApp<sup>TM</sup></h1>
         <div class="bell-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 117.033 122.88">
                 <path
@@ -21,35 +22,40 @@
             <div class="notifs-container">
 
             </div>
-            <img src="web_app_dashboard_v3.2/images/member-3.jpg" alt="photo of the user">
-            <h3>Student Name</h3>
+            <div class="profile-header">
+                <img src="web_app_dashboard_v3.2/images/member-3.jpg" class="profile-img" alt="photo of the user">
+            </div>
+            <h3 class="user-header">Student Name</h3>
         </div>
-        <nav>
-            <a>
-                <img src="web_app_dashboard_v3.2/svgs/home.svg" alt="icon for home">
-            </a>
-            <a>
-                <img src="web_app_dashboard_v3.2/svgs/bar-chart.svg" alt="icon for chart">
-            </a>
-            <a>
-                <img src="web_app_dashboard_v3.2/svgs/members.svg" alt="icon for membership">
-            </a>
-            <a>
-                <img src="web_app_dashboard_v3.2/svgs/settings.svg" alt="gear icon for settings">
-            </a>
-        </nav>
     </header>
-    <main>
+    <nav class="nav">
+        <a>
+            <img src="web_app_dashboard_v3.2/svgs/home.svg" alt="icon for home">
+        </a>
+        <a>
+            <img src="web_app_dashboard_v3.2/svgs/bar-chart.svg" alt="icon for chart">
+        </a>
+        <a>
+            <img src="web_app_dashboard_v3.2/svgs/members.svg" alt="icon for membership">
+        </a>
+        <a>
+            <img src="web_app_dashboard_v3.2/svgs/settings.svg" alt="gear icon for settings">
+        </a>
+    </nav>
+
+    <main class="main">
         <!-- main dash heading and search bar -->
-        <div class="main-header">
-            <h2 class="headline">Dashboard</h2>
-            <div class="header-search">
-                <input type="search" id="search" placeholder="search..." />
+        <section class="dash">
+            <div class="main-header">
+                <h2 class="headline">Dashboard</h2>
+                <div class="header-search">
+                    <input type="search" id="search" placeholder="search..." />
+                </div>
+                <div class="alert" id="alert">
+                    <!-- Js for alert goes here -->
+                </div>
             </div>
-            <div class="alert" id="alert">
-                <!-- Js goes here -->
-            </div>
-        </div>
+        </section>
         <!-- line graph charts -->
         <section class="traffic">
             <div class="traffic-header">
@@ -62,22 +68,28 @@
                 </ul>
             </div>
             <div class="widget-container-full">
-                <!-- JS goes here -->
+                <!-- JS for graph goes here -->
+                <!-- PLACEHOLDER IMAGE ONLY -->
+                <img src="web_app_dashboard_v3.2/images/graph_example.png" class="img-chart">
                 <canvas id="traffic-chart"></canvas>
             </div>
         </section>
         <!-- bar graph -->
-        <section class-"daily">
+        <section class="daily">
             <h3>Daily Traffic</h3>
             <div class="widget-container-half">
-                <!-- JS goes here -->
+                <!-- JS for bar chart goes here -->
+                <!-- PLACEHOLDER IMAGE ONLY -->
+                <img src="web_app_dashboard_v3.2/images/barchart_example.png" class="img-chart">
                 <canvas id="daily-chart"></canvas>
             </div>
         </section>
-        <section class-"user-devices">
+        <section class="user-devices">
             <h3>Mobile Users</h3>
             <div class="widget-container-half">
-                <!-- JS goes here -->
+                <!-- JS for pie chart goes here -->
+                <!-- PLACEHOLDER IMAGE ONLY -->
+                <img src="web_app_dashboard_v3.2/images/piechart_example.svg" class="img-chart">
                 <canvas id="user-device-chart"></canvas>
             </div>
         </section>
@@ -200,6 +212,44 @@
                 <textarea placeholder="Message for user" class="form-area" id="messageField"></textarea>
                 <button class="button-primary" id="send">Send</button>
             </form>
+        </section>
+        <section class="settings">
+            <h3>Settings</h3>
+            <div class="switch-email">
+                <h4>Send email notifications</h4>
+                <label class="switch-light switch-candy" onclick="">
+                    <input type="checkbox">
+
+                    <span>
+                        <span>Off</span>
+                        <span>On</span>
+                        <a></a>
+                    </span>
+                </label>
+            </div>
+            <div class="switch-public">
+                <h4>Set Profile to Public</h4>
+                <label class="switch-light switch-candy" onclick="">
+                    <input type="checkbox">
+
+                    <span>
+                        <span>Off</span>
+                        <span>On</span>
+                        <a></a>
+                    </span>
+                </label>
+            </div>
+            <select class="form-field" id="timezone">
+                <option disabled selection>Select a Timezone</option>
+                <option>Eastern</option>
+                <option>Central</option>
+                <option>Mountain</option>
+                <option>Pacific</option>
+            </select>
+            <div class="settings-button">
+                <button class="button-primary" id="save">Save</button>
+                <button class="button-disabled" id="cancel">Cancel</button>
+            </div>
         </section>
     </main>
 
