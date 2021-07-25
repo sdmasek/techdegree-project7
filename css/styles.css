@@ -1,13 +1,5 @@
-.social-image{
-    width: 3em;
-    height: 3em;
-}
 
 
-
-.img-chart{
-    width: 45vw;
-}
 
 .grid-container{
     display: grid;
@@ -23,26 +15,59 @@
     grid-area: header;
     display: flex;
     flex-direction: row;
+    /* justify-content: space-around; */
     flex-wrap: nowrap;
     background-color: rgb(120, 101, 189);
 }
 
-.user-header{
-    font-size: 1em;
-}
-
 .nav{
     grid-area: nav;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0 2em;
     background-color: rgb(42, 40, 82);
 }
 
+.social-image, .nav-img{
+    width: 2.5em;
+    height: 2.5em;
+}
+
+.nav-img{
+    margin: .5em;
+    stroke: #fff;
+    fill: #fff;
+}
+
+.main-title, .bell-icon{
+    padding: .5em;
+    /* margin: auto; */
+}
+
 .main-title{
-    font-size: 1.5em;
+    font-size: 1.25em;
+    padding-right: 0;
+    margin-top: 1em;
+}
+sup{
+    font-size: .5em;
+}
+.bell-icon{
+    display: flex;
+    flex-direction: row;
+    padding-right: 0;
+}
+.notifs-container, .notifs-container img{
+    width: 1.5em;
+    height: 1.5em;
 }
 
 .bell-icon svg{
     width: 1.5em;
     height: 1.5em;
+    margin-top: 1em;
+    margin-left: 1em;
 }
 .profile-img{
     height: 3.5em;
@@ -52,11 +77,35 @@
 }
 
 .profile-header{
-    border-left: 3px solid grey;
+    border-left: 1px solid grey;
+    padding-left: .5em;
+    margin: 0;
+    
 }
+.profile-header, .profile-header img{
+    width: 2.5em;
+    height: 2.5em;
+    margin-top: .5em;
+}
+.profile-header img{
+    margin: auto;
+}
+
+.user-header{
+    font-size: .75em;
+    padding: 1em;
+    padding-right: 0;
+    margin: auto;
+}
+
 .main{
     grid-area: main;
   
+}
+
+/* placeholder for chart.js */
+.img-chart{
+    width: 95vw;
 }
 
 @media screen and (min-width: 768px){
@@ -89,7 +138,7 @@
     .social{
         grid-area: social;
     }
-    .daily{
+    #daily{
         grid-area: daily;
     
     }
@@ -97,7 +146,7 @@
         grid-area: devices;
     
     }
-    .members-profile{
+    #members-profile{
         grid-area: members;
     }
     .members-activity{
@@ -106,8 +155,16 @@
     .message{
         grid-area: message;
     }
-    .settings{
+    #settings{
         grid-area: settings;
+    }
+    /* placeholder for chart.js */
+    .img-chart{
+        width: 45vw;
+    }
+    /* placeholder for chart.js */
+    .traffic img{
+        width: 95vw;
     }
     
 }
