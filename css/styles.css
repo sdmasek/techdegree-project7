@@ -3,6 +3,7 @@
 
 .grid-container{
     display: grid;
+    font-family: 'Montserrat', sans-serif;
     grid-template-columns: 100%;
     grid-template-rows: auto;
     grid-template-areas:
@@ -15,7 +16,6 @@
     grid-area: header;
     display: flex;
     flex-direction: row;
-    /* justify-content: space-around; */
     flex-wrap: nowrap;
     background-color: rgb(120, 101, 189);
 }
@@ -41,14 +41,19 @@
 }
 
 .main-title, .bell-icon{
-    padding: .5em;
+    padding: .25em;
     /* margin: auto; */
 }
 
 .main-title{
-    font-size: 1.25em;
+    font-size: 1.10em;
     padding-right: 0;
     margin-top: 1em;
+    color: #fff;
+}
+
+.main-title span{
+    font-weight: 200;
 }
 sup{
     font-size: .5em;
@@ -68,6 +73,7 @@ sup{
     height: 1.5em;
     margin-top: 1em;
     margin-left: 1em;
+    fill: #fff;
 }
 .profile-img{
     height: 3.5em;
@@ -96,13 +102,33 @@ sup{
     padding: 1em;
     padding-right: 0;
     margin: auto;
+    color: #fff;
+    font-weight: 200;
 }
 
 .main{
     grid-area: main;
   
 }
+.main-header{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+   
+}
+input[type="search"]{
+    height: 3em;
+    border-right: none;
+  
+}
 
+.alert{
+    flex: 1 100%;
+}
+
+.headline{
+    font-size: 1.10em;
+}
 /* placeholder for chart.js */
 .img-chart{
     width: 95vw;
