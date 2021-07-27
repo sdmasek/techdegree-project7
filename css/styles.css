@@ -236,9 +236,9 @@ input[type="search"]{
 .activity-text span{
     font-weight: bold;
 }
-#members-profile h3, .members-activity h3{
+/* #members-profile h3, .members-activity h3{
     margin-left: .5em;
-}
+} */
 
 .member img, .activity img{
     margin-top: 1em;
@@ -337,7 +337,6 @@ input[type="search"]{
     border-radius: 34px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
   }
   
   .slider.round:before {
@@ -345,16 +344,42 @@ input[type="search"]{
   }
   /* End toggle switch customization code*/
   .switch-container{
+      margin: .5em;
       display: flex;
       flex-direction: row;
-      margin: .5em;
+      justify-content: space-between;
   }
-  .switch-container p{
-      margin: auto .2em;
-  }
-  
-  
 
+  .send-email,.set-profile{
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+  }
+  .switch-box{
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      margin: auto 0;
+  }
+  
+  .message h3, #settings h3{
+      margin-left: .5em;
+  }
+
+  #timezone, .settings-button{
+      width: 90%;
+      margin: 1em;
+  }
+  #save{
+      width: 40%;
+  }
+  .button-disabled{
+      width: 40%;
+      padding: .75em;
+      color: #fff;
+      background-color:rgb(201, 196, 196);
+      border: 1px solid rgb(201, 196, 196);
+  }
 @media screen and (min-width: 768px){
     .grid-container{
         grid-template-columns: 55px 1fr;
