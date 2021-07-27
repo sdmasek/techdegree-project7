@@ -270,6 +270,91 @@ input[type="search"]{
     border-radius: 5%;
     border: 1px solid rgb(201, 196, 196);
 }
+/* toggle switch code taken from W3C */
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 90px;
+    height: 38px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 30px;
+    width: 30px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  
+  input:checked + .slider{
+    background-color: rgb(120, 101, 189);
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px rgb(120,101,189);
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(50px);
+    -ms-transform: translateX(50px);
+    transform: translateX(50px);
+  }
+  .slider.round p{
+      margin: .5em 0 0 .5em;
+      font-size: 1em;
+      color: #fff;
+  }
+  
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+  /* End toggle switch customization code*/
+  .switch-container{
+      display: flex;
+      flex-direction: row;
+      margin: .5em;
+  }
+  .switch-container p{
+      margin: auto .2em;
+  }
+  
+  
+
 @media screen and (min-width: 768px){
     .grid-container{
         grid-template-columns: 55px 1fr;

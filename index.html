@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
     <link href="css/normalize.css" rel="stylesheet">
-    <link href="css/toggle-switch.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
     <title>Web App Dashboard</title>
 </head>
@@ -245,27 +244,23 @@
         <hr class="hr-6">
         <section id="settings">
             <h3>Settings</h3>
-            <div class="switch-email">
-                <h4>Send email notifications</h4>
-                <label class="switch-light switch-candy" onclick="">
+            <div class="switch-container">
+                <p>Send Email Notifications</p>
+                <label class="switch" id="switch-email">
                     <input type="checkbox">
-
-                    <span>
-                        <span>Off</span>
-                        <span>On</span>
-                        <a></a>
+                    <span class="slider round">
+                        <p class="on">On</p>
+                        <p class="off"></p>
                     </span>
                 </label>
             </div>
-            <div class="switch-public">
-                <h4>Set Profile to Public</h4>
-                <label class="switch-light switch-candy" onclick="">
+            <div class="switch-container">
+                <p>Set Profile to Public</p>
+                <label class="switch" id="switch-public">
                     <input type="checkbox">
-
-                    <span>
-                        <span>Off</span>
-                        <span>On</span>
-                        <a></a>
+                    <span class="slider round">
+                        <p class="on">On</p>
+                        <p class="off"></p>
                     </span>
                 </label>
             </div>
