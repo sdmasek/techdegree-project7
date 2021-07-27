@@ -203,6 +203,73 @@ input[type="search"]{
     font-weight: 200;
     margin: .2em;
 }
+
+#members-profile, .members-activity{
+    max-width: 85%;
+    margin: 0 auto;
+}
+
+.text-symbol{
+    display: none;
+}
+
+.member, .activity{
+    text-align: center;
+    border-top: 1px solid rgb(201, 196, 196);
+    margin: 0 auto;
+}
+.member:nth-of-type(1){
+    border-top-width: 0;
+}
+
+.member-text a{
+    text-decoration: none;
+    color: rgb(120, 101, 189);
+    font-weight: bold;
+}
+.name{
+    margin: 0;
+}
+.date{
+    margin-top: 0;
+}
+.activity-text span{
+    font-weight: bold;
+}
+#members-profile h3, .members-activity h3{
+    margin-left: .5em;
+}
+
+.member img, .activity img{
+    margin-top: 1em;
+    padding: 0;
+}
+
+.form-field, .form-area{
+    background-color: rgb(241, 238, 238);
+    border: 1px solid rgb(201, 196, 196);
+    margin-bottom: 1em;
+    border-radius: 5%;
+}
+.form-field{
+    height: 3em;
+}
+.form-area{
+    height: 9em;
+}
+.widget-form{
+    display: flex;
+    flex-direction: column;
+    max-width: 90%;
+    margin: auto;
+}
+.button-primary{
+    color: #fff;
+    background-color:rgb(120, 101, 189);
+    padding: .75em;
+    border-radius: 5%;
+    border: 1px solid rgb(201, 196, 196);
+}
 @media screen and (min-width: 768px){
     .grid-container{
         grid-template-columns: 55px 1fr;
