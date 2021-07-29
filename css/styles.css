@@ -551,7 +551,7 @@ input[type="search"]{
         max-width: 100%;
         margin: auto .5em;
     }
-    .members-activity{
+    .members-activity h3{
         margin-top: 1px solid rgb(201, 196, 196);
     }
     .time{
@@ -559,12 +559,12 @@ input[type="search"]{
     }
     .text-symbol{
         visibility: visible;
-        width: 10%;
-        height: 3em;
+        width: 90%;
         color: rgb(120,101,189);
         text-align: right;
-        font-weight: bold;
         align-self: flex-end;
+        margin: auto .5em;
+        font-size: 1.5em;
     }
 }
 
