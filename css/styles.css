@@ -1,6 +1,4 @@
 
-
-
 .grid-container{
     display: grid;
     font-family: 'Montserrat', sans-serif;
@@ -131,9 +129,7 @@ sup{
     flex-direction: row;
     flex-wrap: wrap;
 }
-.header-search{
-    flex-basis: 70%;
-}
+
 input[type="search"]{
     height: 3em;
     width: 100%;
@@ -471,7 +467,7 @@ input[type="search"]{
 
     .bell-icon{
         justify-content: flex-end;
-        width: 90%;
+        width: 100%;
     }
     .main-header{
         width: 100%;
@@ -584,6 +580,7 @@ input[type="search"]{
     }
     .message{
         border-top: 1px solid rgb(201, 196, 196);
+        border-bottom:  1px solid rgb(201, 196, 196);
     }
     .message h3{
         margin-left: 2em;
@@ -596,11 +593,15 @@ input[type="search"]{
         width: 30%;
         margin-right: .5em;
     }
-    #settings{
-        margin-left: 1em;
+    #send{
+        margin-bottom: 1em;
     }
+    
     #save, #cancel{
         width: 48%;
+    }
+    .hr-1,.hr-2,.hr-3,.hr-4,.hr-5,.hr-6{
+        display: none;
     }
 }
 
@@ -614,4 +615,40 @@ input[type="search"]{
          "members activity"
          "message settings";
      }
+     .social-image{
+         width: 25%;
+     }
+     .members-activity{
+         border-left: 1px solid rgb(201, 196, 196);
+     }
+     
+     #members-profile h3, .members-activity h3{
+         margin-left: .5em;
+     }
+     .activity:first-of-type{
+         border: none;
+     }
+     
+     .activity-text{
+         width: 100%;
+     }
+     .date{
+         margin-right: 1em;
+     }
+     .text-symbol{
+         width: 20%;
+     }
+     #settings{
+         border-top: 1px solid rgb(201, 196, 196);
+         margin: 0;
+     }
+     .settings-button{
+         display: flex;
+         flex-direction: row;
+         margin-top: 1em;
+     }
+     .send-email, .set-profile{
+         width: 50%;
+     }
+    
 }
