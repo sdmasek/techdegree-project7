@@ -122,13 +122,16 @@ sup{
 
 .main{
     grid-area: main;
+    width: 100%;
   
 }
 .main-header{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+   
 }
+
 
 input[type="search"]{
     height: 3em;
@@ -198,7 +201,7 @@ input[type="search"]{
     background-color: rgb(120, 101, 189);
     border: 1px solid rgb(120, 101, 189);
     border-radius: 50%;
-    padding: .75em;
+    padding: .75rem;
     margin: .5em;
 }
 .social-image svg{
@@ -406,7 +409,7 @@ input[type="search"]{
     }
     .main{
         display: grid;
-        grid-template-columns: 47vw 46vw;
+        grid-template-columns: 1fr 1fr;
         grid-template-areas:
                 "dash dash"
                 "traffic traffic"
@@ -472,9 +475,10 @@ input[type="search"]{
     .main-header{
         width: 100%;
         justify-content: flex-end;
+        flex-wrap: nowrap;
     }
     .header-search{
-        flex-basis: 83%;
+        flex-basis: 100%;
     }
     /* .dash{
        display: flex;
@@ -617,6 +621,7 @@ input[type="search"]{
      }
      .social-image{
          width: 25%;
+         padding: 1em;
      }
      .members-activity{
          border-left: 1px solid rgb(201, 196, 196);
@@ -641,14 +646,39 @@ input[type="search"]{
      #settings{
          border-top: 1px solid rgb(201, 196, 196);
          margin: 0;
+         position: relative;
      }
      .settings-button{
          display: flex;
          flex-direction: row;
          margin-top: 1em;
+         position: absolute;
+         bottom: .20em;
+     }
+     .settings-container{
+         margin: 1em;
+         position: absolute;
+         bottom: 5em;
+         height: 7em;
+     }
+     .form-field{
+         position: absolute;
+         bottom: 4em;
      }
      .send-email, .set-profile{
          width: 50%;
+     }
+
+     /* .main-header{
+         justify-content: start;
+     } */
+
+     .header-search{
+         flex-basis: 85%;
+     }
+
+     .headline{
+         margin: auto;
      }
     
 }

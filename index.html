@@ -82,9 +82,9 @@
                 <div class="header-search">
                     <input type="search" id="search" placeholder="search..." />
                 </div>
-                <div class="alert" id="alert">
-                    <!-- Js for alert goes here -->
-                </div>
+            </div>
+            <div class="alert" id="alert">
+                <!-- Js for alert goes here -->
             </div>
         </section>
         <!-- line graph charts -->
@@ -257,30 +257,32 @@
         <hr class="hr-6">
         <section id="settings">
             <h3>Settings</h3>
-            <div class="switch-container">
-                <div class="send-email">
-                    <p>Send Email Notifications</p>
+            <div class="settings-container">
+                <div class="switch-container">
+                    <div class="send-email">
+                        <p>Send Email Notifications</p>
+                    </div>
+                    <div class="switch-box">
+                        <label class="switch" id="switch-email">
+                            <input type="checkbox">
+                            <span class="slider round">
+                                <span class="on">On</span>
+                            </span>
+                        </label>
+                    </div>
                 </div>
-                <div class="switch-box">
-                    <label class="switch" id="switch-email">
-                        <input type="checkbox">
-                        <span class="slider round">
-                            <span class="on">On</span>
-                        </span>
-                    </label>
-                </div>
-            </div>
-            <div class="switch-container">
-                <div class="set-profile">
-                    <p>Set Profile to Public</p>
-                </div>
-                <div class="switch-box">
-                    <label class="switch" id="switch-public">
-                        <input type="checkbox">
-                        <span class="slider round">
-                            <span class="on">On</span>
-                        </span>
-                    </label>
+                <div class="switch-container">
+                    <div class="set-profile">
+                        <p>Set Profile to Public</p>
+                    </div>
+                    <div class="switch-box">
+                        <label class="switch" id="switch-public">
+                            <input type="checkbox">
+                            <span class="slider round">
+                                <span class="on">On</span>
+                            </span>
+                        </label>
+                    </div>
                 </div>
             </div>
             <select class="form-field" id="timezone">
