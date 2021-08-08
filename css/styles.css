@@ -144,8 +144,35 @@ input[type="search"]{
 }
 
 .alert{
-    flex: 1 100%;
+    
+    /* flex-basis: 90%; */
+    background-color: rgb(120, 101, 189);
+    color: #fff;
+    padding: .5em;
+    margin: .5em;
+    border-radius: 5px;
 }
+
+ .alert-banner{
+     display: flex;
+     flex-direction: row;
+     justify-content: space-between;
+     font-size: .75em;
+     width: 100%;
+ }
+
+  .alert-banner p:first-of-type{
+    margin: 0;
+    
+}
+ .alert-banner-close{
+    width: 1em;
+    font-weight: bold;
+    margin: auto 0;
+    display: inline;
+    text-align: right;
+    cursor: pointer;
+} 
 
 .headline{
     font-size: 1em;
@@ -164,10 +191,12 @@ input[type="search"]{
     padding: 0;
 }
 .traffic-nav-link{
+    cursor: pointer;
     list-style: none;
     font-weight: bold;
     padding: .75em .5em;
 }
+
 /* for selecting the nav on click */
 .traffic-nav-select{
     background-color: rgb(164, 221, 164);
@@ -177,6 +206,9 @@ input[type="search"]{
 }
 /* placeholder for chart.js */
 .img-chart{
+    width: 95vw;
+}
+.widget-container-full, .widget-container-half{
     width: 95vw;
 }
 #daily h3, .user-devices h3{
@@ -508,6 +540,13 @@ input[type="search"]{
         justify-content: flex-end;
         margin-right: .5em;
     }
+
+    .widget-container-full{
+        width: 90vw;
+    }
+    .widget-container-half{
+        width: 45vw;
+    }
     #daily, .user-devices{
         border-top: 1px solid rgb(201, 196, 196);
         border-bottom: 1px solid rgb(201, 196, 196);
@@ -656,15 +695,21 @@ input[type="search"]{
          bottom: .20em;
      }
      .settings-container{
+         width: 100%;
          margin: 1em;
          position: absolute;
          bottom: 5em;
-         height: 7em;
+         height: 9em;
      }
-     .form-field{
-         position: absolute;
+
+     #timezone{
+        bottom: 4em;
+        margin: 0 auto;
+     }
+     /* .form-field{
          bottom: 4em;
-     }
+     } */
+    
      .send-email, .set-profile{
          width: 50%;
      }
