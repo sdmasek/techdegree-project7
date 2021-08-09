@@ -1,7 +1,7 @@
 const alertBanner = document.getElementById("alert");
-const trafficCanvas = document.getElementById("traffic-chart");
-const dailyCanvas = document.getElementById("daily-chart");
-const userDeviceCanvas = document.getElementById("user-device-chart");
+const trafficCanvas = document.getElementById("traffic-chart").getContext('2d');
+const dailyCanvas = document.getElementById("daily-chart").getContext('2d');
+const userDeviceCanvas = document.getElementById("user-device-chart").getContext('2d');
 const user = document.getElementById("user-field");
 const message = document.getElementById("messageField");
 const send = document.getElementById("send");
@@ -39,17 +39,7 @@ send.addEventListener('click', () => {
     }
 });
 
-// trafficNavs.forEach((link) => {
-//     link.addEventListener('click', () => {
-//         link.classList.add("traffic-nav-select");
-//     });
-// });
 
-// trafficNavs.forEach((trafficNav) => {
-//     return trafficNav.addEventListener("click", () => {
-//         trafficNav.classList.add("traffic-nav-select");
-//     });
-// });
 
 
 
@@ -93,13 +83,15 @@ let trafficChart = new Chart(trafficCanvas, {
 const dailyData = {
     labels: ["S", "M", "T", "W", "T", "F", "S"],
     datasets: [{
-        label: [75, 115, 175, 125, 225, 200, 100],
-        backgroundColor: '#7477BF',
+        label: '# of Hits',
+        data: [75, 115, 175, 125, 225, 200, 100],
+        backgroundColor: 'rgba(120, 101, 189, .9)',
         borderWidth: 1
     }]
 };
 
 const dailyOptions = {
+    maintainAspectRatio: false,
     scales: {
         y: {
             beginAtZero: true
@@ -133,22 +125,35 @@ const userDeviceData = {
 };
 
 const userDeviceOptions = {
+    //added this as advised from fullstack.com because height will 
+    //auto-generate to a size larger than the parent container
+    maintainAspectRatio: false,
     plugins: {
         legend: {
             position: 'right',
             labels: {
                 boxWidth: 20,
                 fontStyle: 'bold'
+
             }
         }
     }
 };
+
+
 
 let userDeviceChart = new Chart(userDeviceCanvas, {
     type: 'doughnut',
     data: userDeviceData,
     options: userDeviceOptions
 });
+
+
+
+
+
+
+
 
 
 

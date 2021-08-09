@@ -120,6 +120,10 @@ sup{
     font-weight: 200;
 }
 
+.user-devices{
+    padding: 1em;
+}
+
 .main{
     grid-area: main;
     width: 100%;
@@ -546,7 +550,10 @@ input[type="search"]{
     }
     .widget-container-half{
         width: 45vw;
+        height: 30vh;
+        /* padding: 1em; */
     }
+
     #daily, .user-devices{
         border-top: 1px solid rgb(201, 196, 196);
         border-bottom: 1px solid rgb(201, 196, 196);
