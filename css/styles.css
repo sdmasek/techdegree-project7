@@ -60,11 +60,13 @@ sup{
     display: flex;
     flex-direction: row;
     padding-right: 0;
+    position: relative;
     
 }
 .notifs-container{
    display: flex;
    flex-direction: row;
+   position: relative;
 }
 .notifs-container:hover{
     cursor: pointer;
@@ -86,6 +88,24 @@ sup{
     height: 1.5em;
     width: 1.5em;
     margin: 0;
+}
+.notifs-container-dropdown{
+    position: absolute;
+    display: inline-block;
+}
+
+.notifs-content-dropdown{
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 4rem;
+    z-index: 3;
+}
+.content{
+    background-color:rgb(201, 196, 196);
+    padding: 1rem;
+    list-style: none;
+    cursor: pointer;
 }
 
 
@@ -120,7 +140,7 @@ sup{
     font-weight: 200;
 }
 
-.user-devices{
+.user-devices, #daily{
     padding: 1em;
 }
 
@@ -152,7 +172,7 @@ input[type="search"]{
     /* flex-basis: 90%; */
     background-color: rgb(120, 101, 189);
     color: #fff;
-    padding: .5em;
+    padding: 1em;
     margin: .5em;
     border-radius: 5px;
 }
@@ -214,9 +234,14 @@ input[type="search"]{
 }
 .widget-container-full, .widget-container-half{
     width: 95vw;
+    height: 20vh;
 }
 #daily h3, .user-devices h3{
     margin-left: .5em;
+}
+
+#daily, .user-devices, .traffic, .social{
+    border-bottom: 1px solid rgb(201, 196, 196);
 }
 
 .social h3{
@@ -233,7 +258,9 @@ input[type="search"]{
 }
 
 .social-image{
-    max-width: 25%;
+    /* max-width: 25%; */
+    width: 3.125rem;
+    height: 3.125rem;
     background-color: rgb(120, 101, 189);
     border: 1px solid rgb(120, 101, 189);
     border-radius: 50%;
@@ -269,7 +296,7 @@ input[type="search"]{
 
 .member, .activity{
     text-align: center;
-    border-top: 1px solid rgb(201, 196, 196);
+    border-bottom: 1px solid rgb(201, 196, 196);
     margin: 0 auto;
 }
 .member:nth-of-type(1){
@@ -290,9 +317,7 @@ input[type="search"]{
 .activity-text span{
     font-weight: bold;
 }
-/* #members-profile h3, .members-activity h3{
-    margin-left: .5em;
-} */
+
 
 .member img, .activity img{
     margin-top: 1em;
@@ -415,6 +440,10 @@ input[type="search"]{
       justify-content: flex-end;
       margin: auto 0;
   }
+
+  .message{
+      margin-bottom: 1rem;
+  }
   
   .message h3, #settings h3{
       margin-left: .5em;
@@ -435,6 +464,10 @@ input[type="search"]{
       background-color:rgb(201, 196, 196);
       border: 1px solid rgb(201, 196, 196);
       border-radius: 10px;
+  }
+
+  #settings{
+    border-top: 1px solid rgb(201, 196, 196);
   }
 @media screen and (min-width: 768px){
     .grid-container{
@@ -482,9 +515,13 @@ input[type="search"]{
     }
     .message{
         grid-area: message;
+        border-top: none;
+        border-bottom:  1px solid rgb(201, 196, 196);
     }
     #settings{
         grid-area: settings;
+        border-top: none;
+        margin-left: 2em;
     }
     /* placeholder for chart.js */
     .img-chart{
@@ -516,11 +553,7 @@ input[type="search"]{
     .header-search{
         flex-basis: 100%;
     }
-    /* .dash{
-       display: flex;
-       flex-direction: row;
-       justify-content: space-between;
-    } */
+ 
     .headline{
         flex-basis: 10%;
         margin: auto 1em;
@@ -547,6 +580,8 @@ input[type="search"]{
 
     .widget-container-full{
         width: 90vw;
+        height: 30vh;
+        margin: 1rem;
     }
     .widget-container-half{
         width: 45vw;
@@ -572,7 +607,7 @@ input[type="search"]{
         width: 100%;
     }
     .social-image{
-        width: 30%;
+        height: 2rem;
     }
     .social-container{
         margin-top: 0;
@@ -614,7 +649,7 @@ input[type="search"]{
         margin: auto .5em;
     }
     .members-activity h3{
-        margin-top: 1px solid rgb(201, 196, 196);
+        border-top: 1px solid rgb(201, 196, 196);
     }
     .time{
         margin-top: 0;
@@ -628,10 +663,7 @@ input[type="search"]{
         margin: auto .5em;
         font-size: 1.5em;
     }
-    .message{
-        border-top: 1px solid rgb(201, 196, 196);
-        border-bottom:  1px solid rgb(201, 196, 196);
-    }
+   
     .message h3{
         margin-left: 2em;
         
@@ -643,6 +675,10 @@ input[type="search"]{
         width: 30%;
         margin-right: .5em;
     }
+
+    .settings-container{
+        margin-left: .5em;
+    }
     #send{
         margin-bottom: 1em;
     }
@@ -650,9 +686,7 @@ input[type="search"]{
     #save, #cancel{
         width: 48%;
     }
-    .hr-1,.hr-2,.hr-3,.hr-4,.hr-5,.hr-6{
-        display: none;
-    }
+  
 }
 
 @media screen and (min-width: 1024px){
@@ -665,8 +699,12 @@ input[type="search"]{
          "members activity"
          "message settings";
      }
+     .widget-container-full{
+         height: 45vh;
+     }
+     
      .social-image{
-         width: 25%;
+         /* width: 25%; */
          padding: 1em;
      }
      .members-activity{
@@ -713,18 +751,13 @@ input[type="search"]{
         bottom: 4em;
         margin: 0 auto;
      }
-     /* .form-field{
-         bottom: 4em;
-     } */
+ 
     
      .send-email, .set-profile{
          width: 50%;
      }
 
-     /* .main-header{
-         justify-content: start;
-     } */
-
+  
      .header-search{
          flex-basis: 85%;
      }

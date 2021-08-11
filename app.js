@@ -6,6 +6,9 @@ const user = document.getElementById("user-field");
 const message = document.getElementById("messageField");
 const send = document.getElementById("send");
 const trafficNavs = document.querySelectorAll(".traffic-nav-link");
+
+const bellNotification = document.querySelector(".notifs-container");
+const notifContainer = document.querySelector(".bell-icon");
 //create the html that will make the banner appear
 alertBanner.innerHTML =
     //here create two new classes that will help display and close
@@ -39,6 +42,42 @@ send.addEventListener('click', () => {
     }
 });
 
+//create an event listener where two notifications are display
+//simultaneously via drop down
+
+//create a var to hold the child element of bellNotification
+const newNotif = document.createElement("div");
+addNotifs = () => {
+    newNotif.className = "notifs-container-dropdown";
+    newNotif.innerHTML =
+        `
+    <ul class="notifs-content-dropdown">
+        <li class="content">You are now online</li>
+        <li class="content">You have 3 unread messages</li>
+    </ul>
+        `;
+    bellNotification.appendChild(newNotif);
+    bellNotification.style.width = "200px";
+}
+
+// function to remove the innerHTML and restore the notifs - container
+// div to its original width
+removeNotifs = () => {
+    bellNotification.removeChild(newNotif);
+
+    bellNotification.style.width = "0px";
+}
+
+bellNotification.addEventListener("click", (e) => {
+    if (e.target.className === "notifs-container") {
+        addNotifs();
+    }
+
+    if (e.target.className !== ".notifs-container") {
+        removeNotifs();
+    }
+
+});
 
 
 
@@ -52,7 +91,9 @@ let trafficData = {
     datasets: [{
         data: [750, 1250, 1000, 2000, 1500, 1750, 1250, 1850, 2250, 1500,
             2500],
-        backgroundColor: 'rgba(116, 119, 191, .3)',
+        backgroundColor: 'rgba(120, 101, 189, .3)',
+        fill: true,
+        tension: .5,
         borderWidth: 1,
     }]
 };
