@@ -5,10 +5,11 @@ const userDeviceCanvas = document.getElementById("user-device-chart").getContext
 const user = document.getElementById("user-field");
 const message = document.getElementById("messageField");
 const send = document.getElementById("send");
-const trafficNavs = document.querySelectorAll(".traffic-nav-link");
+const trafficNav = document.querySelector(".traffic-nav");
 
 const bellNotification = document.querySelector(".notifs-container");
 const notifContainer = document.querySelector(".bell-icon");
+
 //create the html that will make the banner appear
 alertBanner.innerHTML =
     //here create two new classes that will help display and close
@@ -57,7 +58,9 @@ addNotifs = () => {
     </ul>
         `;
     bellNotification.appendChild(newNotif);
-    bellNotification.style.width = "200px";
+    bellNotification.style.width = "100px";
+    document.querySelector('.notifs-content-dropdown').classList.add("display-flexcolumn");
+    newNotif.firstElementChild.style.display = "flex";
 }
 
 // function to remove the innerHTML and restore the notifs - container
@@ -65,16 +68,15 @@ addNotifs = () => {
 removeNotifs = () => {
     bellNotification.removeChild(newNotif);
 
-    bellNotification.style.width = "0px";
+    bellNotification.style.width = "initial";
+    newNotif.firstElementChild.style.display = "none";
 }
 
-bellNotification.addEventListener("click", (e) => {
-    if (e.target.className === "notifs-container") {
-        addNotifs();
-    }
-
-    if (e.target.className !== ".notifs-container") {
+bellNotification.addEventListener("click", () => {
+    if (document.querySelector('.notifs-content-dropdown')) {
         removeNotifs();
+    } else {
+        addNotifs();
     }
 
 });
@@ -119,6 +121,21 @@ let trafficChart = new Chart(trafficCanvas, {
     type: 'line',
     data: trafficData,
     options: trafficOptions
+});
+
+//create a new chart by selecting a different link
+const navs = trafficNav.children;
+Array.from(navs).forEach(nav => {
+    nav.addEventListener("click", () => {
+
+        //I need to apply the traffic-nav-select class to each link
+        //I click, while having whichever link that already has the class
+        //have it taken away
+
+
+
+    });
+
 });
 
 const dailyData = {

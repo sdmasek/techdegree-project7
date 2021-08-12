@@ -91,21 +91,37 @@ sup{
 }
 .notifs-container-dropdown{
     position: absolute;
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+  
+   
 }
 
 .notifs-content-dropdown{
     display: none;
     position: absolute;
-    background-color: #fff;
+    background-color: none;
     min-width: 4rem;
     z-index: 3;
+    width: 200px;
+    height: 100px;
+    top: .5rem;
+  
 }
 .content{
     background-color:rgb(201, 196, 196);
-    padding: 1rem;
+    padding: .5rem;
     list-style: none;
     cursor: pointer;
+    border:1px solid rgb(42, 40, 82);
+    height: 50px;
+}
+
+.display-flexcolumn{
+    display: flex;
+    flex-direction: column;
+    
+  
 }
 
 
