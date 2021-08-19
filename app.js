@@ -125,12 +125,16 @@ let trafficChart = new Chart(trafficCanvas, {
 
 //create a new chart by selecting a different link
 const navs = trafficNav.children;
-Array.from(navs).forEach(nav => {
-    nav.addEventListener("click", () => {
 
-        //I need to apply the traffic-nav-select class to each link
-        //I click, while having whichever link that already has the class
-        //have it taken away
+Array.from(navs).forEach(nav => {
+    nav.addEventListener("click", (e) => {
+
+        if (e.target.className !== "traffic-nav-select") {
+
+            e.target.classList.add("traffic-nav-select");
+        } else if (e.target.classList.contains("traffic-nav-select")) {
+            e.target.previousElementSibling.classList.remove("traffic-nav-select");
+        }
 
 
 
