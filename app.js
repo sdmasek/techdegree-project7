@@ -5,7 +5,10 @@ const userDeviceCanvas = document.getElementById("user-device-chart").getContext
 const user = document.getElementById("user-field");
 const message = document.getElementById("messageField");
 const send = document.getElementById("send");
+const trafficSection = document.querySelector(".traffic");
 const trafficNav = document.querySelector(".traffic-nav");
+const trafficContainer = document.querySelector(".widget-container-full");
+
 
 const bellNotification = document.querySelector(".notifs-container");
 const notifContainer = document.querySelector(".bell-icon");
@@ -82,17 +85,53 @@ bellNotification.addEventListener("click", () => {
 });
 
 
-
-
-
-
-//create object literal to hold canvas chart's data
+//all data that goes into the different traffic line charts
 let trafficData = {
     labels: ["16-22", "23-29", "30-5", "6-12", "13-19", "20-26", "27-3",
         "4-10", "11-17", "18-24", "25-31"],
     datasets: [{
         data: [750, 1250, 1000, 2000, 1500, 1750, 1250, 1850, 2250, 1500,
             2500],
+        backgroundColor: 'rgba(120, 101, 189, .3)',
+        fill: true,
+        tension: .5,
+        borderWidth: 1,
+    }]
+};
+
+let trafficData2 = {
+    labels: ["16-22", "23-29", "30-5", "6-12", "13-19", "20-26", "27-3",
+        "4-10", "11-17", "18-24", "25-31"],
+    datasets: [{
+        data: [1100, 550, 850, 1200, 1550, 1700, 1350, 1400, 1650, 2000,
+            1550],
+        backgroundColor: 'rgba(120, 101, 189, .3)',
+        fill: true,
+        tension: .5,
+        borderWidth: 1,
+    }]
+};
+
+
+let trafficData3 = {
+    labels: ["16-22", "23-29", "30-5", "6-12", "13-19", "20-26", "27-3",
+        "4-10", "11-17", "18-24", "25-31"],
+    datasets: [{
+        data: [1700, 850, 1850, 1000, 1150, 700, 1350, 1200, 500, 700,
+            800],
+        backgroundColor: 'rgba(120, 101, 189, .3)',
+        fill: true,
+        tension: .5,
+        borderWidth: 1,
+    }]
+};
+
+let trafficData4 = {
+    labels: ["16-22", "23-29", "30-5", "6-12", "13-19", "20-26", "27-3",
+        "4-10", "11-17", "18-24", "25-31"],
+    datasets: [{
+        data: [400, 550, 1050, 700, 1250, 600, 2000, 1500, 1700, 1350,
+            1200],
         backgroundColor: 'rgba(120, 101, 189, .3)',
         fill: true,
         tension: .5,
@@ -124,21 +163,55 @@ let trafficChart = new Chart(trafficCanvas, {
 });
 
 //create a new chart by selecting a different link
-const navs = trafficNav.children;
-
-Array.from(navs).forEach(nav => {
-    nav.addEventListener("click", (e) => {
-
-        if (e.target.className !== "traffic-nav-select") {
-
-            e.target.classList.add("traffic-nav-select");
-        } else if (e.target.classList.contains("traffic-nav-select")) {
-            e.target.previousElementSibling.classList.remove("traffic-nav-select");
-        }
 
 
+trafficNav.addEventListener("click", (e) => {
+    const trafficChildren = trafficNav.children;
+    //if what I'm pressing isn't part of the ul
+    if (e.target !== trafficNav) {
+        //get all of the nav links in the ul
+        const navs =
+            trafficNav.querySelectorAll('li');
+        //loop through all the nav links and remove the select
+        navs.forEach(nav => {
+            nav.classList.remove("traffic-nav-select");
 
-    });
+        });
+        //add the class to the element you click
+        e.target.classList.add("traffic-nav-select");
+        trafficChart.destroy();
+
+
+        do {
+            trafficChart = new Chart(trafficCanvas, {
+                type: 'line',
+                data: trafficData2,
+                options: trafficOptions
+            });
+        } while (e.target === trafficChildren[1]);
+
+
+        trafficChart.destroy();
+
+        do {
+            trafficChart = new Chart(trafficCanvas, {
+                type: 'line',
+                data: trafficData3,
+                options: trafficOptions
+            });
+        } while (e.target === trafficChildren[2]);
+
+        trafficChart.destroy();
+
+        do {
+            trafficChart = new Chart(trafficCanvas, {
+                type: 'line',
+                data: trafficData4,
+                options: trafficOptions
+            });
+        } while (e.target === trafficChildren[3]);
+
+    }
 
 });
 
