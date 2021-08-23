@@ -141,6 +141,8 @@ let trafficData4 = {
 
 let trafficOptions = {
     aspectRatio: 2.5,
+    maintainAspectRatio: false,
+    responsive: true,
     animation: {
         duration: 0
     },
@@ -162,6 +164,13 @@ let trafficChart = new Chart(trafficCanvas, {
     options: trafficOptions
 });
 
+//function to update charts
+const updateChart = (chart, newData) => {
+    chart.data.labels = newData.labels;
+    chart.data.datasets[0].data = newData.datasets[0].data;
+    chart.update();
+};
+
 //create a new chart by selecting a different link
 
 
@@ -176,42 +185,24 @@ trafficNav.addEventListener("click", (e) => {
         navs.forEach(nav => {
             nav.classList.remove("traffic-nav-select");
 
+
+            if (e.target === trafficChildren[0]) {
+                updateChart(trafficChart, trafficData);
+            } else if (e.target === trafficChildren[1]) {
+                updateChart(trafficChart, trafficData2);
+            } else if (e.target === trafficChildren[2]) {
+                updateChart(trafficChart, trafficData3);
+            } else if (e.target === trafficChildren[3]) {
+                updateChart(trafficChart, trafficData4);
+            }
+
         });
         //add the class to the element you click
         e.target.classList.add("traffic-nav-select");
-        trafficChart.destroy();
-
-
-        do {
-            trafficChart = new Chart(trafficCanvas, {
-                type: 'line',
-                data: trafficData2,
-                options: trafficOptions
-            });
-        } while (e.target === trafficChildren[1]);
-
-
-        trafficChart.destroy();
-
-        do {
-            trafficChart = new Chart(trafficCanvas, {
-                type: 'line',
-                data: trafficData3,
-                options: trafficOptions
-            });
-        } while (e.target === trafficChildren[2]);
-
-        trafficChart.destroy();
-
-        do {
-            trafficChart = new Chart(trafficCanvas, {
-                type: 'line',
-                data: trafficData4,
-                options: trafficOptions
-            });
-        } while (e.target === trafficChildren[3]);
 
     }
+
+
 
 });
 
