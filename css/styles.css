@@ -458,6 +458,32 @@ input[type="search"]{
       margin: auto 0;
   }
 
+  .widget-form{
+      position: relative;
+  }
+
+  .user-list{
+      /* position: relative; */
+      list-style: none;
+      width: 200px; 
+      height: 300px;
+      background-color: #fff;
+      display: list-item;
+      position: absolute;
+   
+  }
+  .user-item{
+      background-color: rgb(201, 196, 196);
+      border:1px solid rgb(42, 40, 82);
+      list-style: none;
+      position: absolute;
+      min-width: 4rem;
+      z-index: 3;
+      width: 200px;
+      height: 50px;
+
+  }
+
   .message{
       margin-bottom: 1rem;
   }

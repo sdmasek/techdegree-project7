@@ -12,6 +12,8 @@ const trafficContainer = document.querySelector(".widget-container-full");
 
 const bellNotification = document.querySelector(".notifs-container");
 const notifContainer = document.querySelector(".bell-icon");
+//get the form element for the message section
+const messageForm = document.querySelector(".widget-form");
 
 //create the html that will make the banner appear
 alertBanner.innerHTML =
@@ -31,18 +33,6 @@ alertBanner.addEventListener('click', e => {
     const element = e.target;
     if (element.classList.contains("alert-banner-close")) {
         alertBanner.style.display = "none";
-    }
-});
-
-send.addEventListener('click', () => {
-    if (user.value === "" && message.value === "") {
-        alert("Please fill out user and message fields");
-    } else if (user.value === "") {
-        alert("Please fill out user field before sending");
-    } else if (message.value === "") {
-        alert("Please fill out message field before sending");
-    } else {
-        alert(`Message successfully sent to: ${user.value}`);
     }
 });
 
@@ -87,6 +77,20 @@ bellNotification.addEventListener("click", () => {
 
 //all data that goes into the different traffic line charts
 let trafficData = {
+    labels: ["16-22", "23-29", "30-5", "6-12", "13-19", "20-26", "27-3",
+        "4-10", "11-17", "18-24", "25-31"],
+    datasets: [{
+        data: [750, 1250, 1000, 2000, 1500, 1750, 1250, 1850, 2250, 1500,
+            2500],
+        backgroundColor: 'rgba(120, 101, 189, .3)',
+        fill: true,
+        tension: .5,
+        borderWidth: 1,
+    }]
+};
+//insert this data into the addEventListener for selecting each
+//traffic nav INSTEAD OF the above traffic data
+let trafficDefault = {
     labels: ["16-22", "23-29", "30-5", "6-12", "13-19", "20-26", "27-3",
         "4-10", "11-17", "18-24", "25-31"],
     datasets: [{
@@ -160,7 +164,7 @@ let trafficOptions = {
 
 let trafficChart = new Chart(trafficCanvas, {
     type: 'line',
-    data: trafficData,
+    data: trafficDefault,
     options: trafficOptions
 });
 
@@ -274,7 +278,78 @@ let userDeviceChart = new Chart(userDeviceCanvas, {
     options: userDeviceOptions
 });
 
+//This event listener displays messages depending on what or
+//what's not in the message field form
+send.addEventListener('click', () => {
+    if (user.value === "" && message.value === "") {
+        alert("Please fill out user and message fields");
+    } else if (user.value === "") {
+        alert("Please fill out user field before sending");
+    } else if (message.value === "") {
+        alert("Please fill out message field before sending");
+    } else {
+        alert(`Message successfully sent to: ${user.value}`);
+    }
+});
 
+//get the input for the "search for user" input field
+const messageInput = messageForm.firstElementChild;
+const userNames = document.getElementsByClassName("name");
+
+const userDiv = document.createElement("div");
+const userLi = document.createElement("li");
+
+userDiv.className = "user-list";
+userLi.className = "user-item";
+
+// create a function that takes an array of names and creates a div
+createUserList = (names) => {
+
+    for (let i = 0; i < names.length; i++) {
+        //let the input's value be identical to the text content
+        //of the li's
+        userLi.textContent = messageInput.value;
+        userDiv.innerHTML =
+            `<ul> 
+        <li class="user-item">${names[i]}</li>
+     </ul>
+    `;
+        //if there's no names or letters in the div
+        //take away the div element
+
+
+    }
+    messageForm.appendChild(userDiv);
+    if (userLi.textContent === "") {
+        messageForm.removeChild(userDiv);
+    }
+
+
+}
+
+//create an automatic search for the message field
+
+
+messageInput.addEventListener("keyup", (e) => {
+
+
+    let search = e.target.value.toLowerCase();
+
+    for (let i = 0; i < userNames.length; i++) {
+        let userText = userNames[i].textContent;
+        if (userText.includes(search)) {
+            createUserList(userText);
+        }
+    }
+
+});
+
+//further things to do:
+//-Create a function that creates and appends a div that lists
+//all the names that match what you type in
+//add the function to the event listener
+//create another event listener tied to the document that closes
+//the div anytime you click outside the document
 
 
 
