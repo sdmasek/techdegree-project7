@@ -311,7 +311,7 @@ createUserList = (names) => {
         userLi.textContent = messageInput.value;
         userDiv.innerHTML =
             `<ul> 
-        <li class="user-item">${names[i]}</li>
+        <li class="user-item">${names}</li>
      </ul>
     `;
         //if there's no names or letters in the div
@@ -326,12 +326,19 @@ createUserList = (names) => {
 
 
 }
+//return only the letters pressed down that match the
+//letters in the users' names
+returnNameLetter = () => {
+    return Array.from(userNames).forEach(username => {
+        let splitname = username.split("");
+        return splitname;
+    });
+}
 
 //create an automatic search for the message field
 
 
 messageInput.addEventListener("keyup", (e) => {
-
 
     let search = e.target.value.toLowerCase();
 
@@ -339,6 +346,7 @@ messageInput.addEventListener("keyup", (e) => {
         let userText = userNames[i].textContent;
         if (userText.includes(search)) {
             createUserList(userText);
+            console.log(returnNameLetter());
         }
     }
 
