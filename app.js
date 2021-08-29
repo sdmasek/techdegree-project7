@@ -328,12 +328,12 @@ createUserList = (names) => {
 }
 //return only the letters pressed down that match the
 //letters in the users' names
-returnNameLetter = () => {
-    return Array.from(userNames).forEach(username => {
-        let splitname = username.split("");
-        return splitname;
-    });
-}
+// returnNameLetter = () => {
+//     return Array.from(userNames).forEach(username => {
+//         let splitname = username.split("");
+//         return splitname;
+//     });
+// }
 
 //create an automatic search for the message field
 
@@ -344,9 +344,9 @@ messageInput.addEventListener("keyup", (e) => {
 
     for (let i = 0; i < userNames.length; i++) {
         let userText = userNames[i].textContent;
-        if (userText.includes(search)) {
+        if (userText.toLowerCase().includes(search)) {
             createUserList(userText);
-            console.log(returnNameLetter());
+
         }
     }
 

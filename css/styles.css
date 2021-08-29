@@ -467,19 +467,21 @@ input[type="search"]{
       list-style: none;
       width: 200px; 
       height: 300px;
-      background-color: #fff;
+      /* background-color: #fff; */
       display: list-item;
       position: absolute;
    
   }
   .user-item{
-      background-color: rgb(201, 196, 196);
-      border:1px solid rgb(42, 40, 82);
+      background-color: #fff;
+      border:1px solid rgb(201, 196, 196);
+      font-weight: bold;
       list-style: none;
       position: absolute;
-      min-width: 4rem;
+      /* min-width: 4rem; */
       z-index: 3;
       width: 200px;
+      left: .5em;
       height: 50px;
 
   }
