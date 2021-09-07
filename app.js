@@ -316,9 +316,7 @@ createUserList = (names) => {
     `;
         //if there's no names or letters in the div
         //take away the div element
-
-
-    }
+    };
     messageForm.appendChild(userDiv);
     if (userLi.textContent === "") {
         messageForm.removeChild(userDiv);
@@ -326,14 +324,7 @@ createUserList = (names) => {
 
 
 }
-//return only the letters pressed down that match the
-//letters in the users' names
-// returnNameLetter = () => {
-//     return Array.from(userNames).forEach(username => {
-//         let splitname = username.split("");
-//         return splitname;
-//     });
-// }
+
 
 //create an automatic search for the message field
 
@@ -358,6 +349,81 @@ messageInput.addEventListener("keyup", (e) => {
 //add the function to the event listener
 //create another event listener tied to the document that closes
 //the div anytime you click outside the document
+
+//create local storage for the email notifications, setting the
+//profile to public, and timezone selection
+const settingsContainer = document.querySelector(".settings-container");
+
+const switchEmail = settingsContainer.querySelector("#switch-email");
+const switchEmailCheckbox = switchEmail.firstElementChild;
+
+const switchPublic = settingsContainer.querySelector("#switch-public");
+const switchPublicCheckbox = switchPublic.firstElementChild;
+
+const settingsChildren = settingsContainer.children;
+
+const settingsButtonContainer = document.querySelector(".settings-button");
+const saveButton = settingsContainer.querySelector("#save");
+const cancelButton = settingsContainer.querySelector("#cancel");
+
+// settingsContainer.addEventListener("change", (e) => {
+//     const saveCheckedEmail = switchEmailCheckbox;
+//     const setProfilePublic = switchPublicCheckbox;
+
+
+//     if (switchEmailCheckbox.checked) {
+//         console.log("Switched to receive email notifications");
+//         localStorage.setItem("send email", JSON.stringify(saveCheckedEmail));
+//     } else {
+//         console.log("Email notifications turned off");
+//     }
+//     if (setProfilePublic.checked) {
+//         console.log("Switched profile to public");
+//         localStorage.setItem("set to public", JSON.stringify(setProfilePublic));
+//     } else {
+//         console.log("Profile set to private");
+//     }
+
+// });
+
+saveSettings = () => {
+    localStorage.setItem("send email", JSON.stringify(switchEmailCheckbox.checked));
+    localStorage.setItem("switch profile", JSON.stringify(switchPublicCheckbox.checked));
+
+}
+
+//when you click the save or cancel button, save or delete 
+//local storage changes
+
+//create key value pairs for notification and timezone settings
+settingsButtonContainer.addEventListener("click", (e) => {
+    const saveButton = settingsButtonContainer.firstElementChild;
+    if (e.target === saveButton) {
+        if (switchEmailCheckbox.checked) {
+            localStorage.setItem("send email", JSON.stringify(switchEmailCheckbox.checked));
+            console.log("switched to receive email notifications");
+        }
+        if (switchPublicCheckbox.checked) {
+            localStorage.setItem("switch profile", JSON.stringify(switchPublicCheckbox.checked));
+            console.log("switched profile to public");
+
+        }
+    } else {
+        localStorage.removeItem("send email", JSON.stringify(switchEmailCheckbox.checked));
+        localStorage.removeItem("switch profile", JSON.stringify(switchPublicCheckbox.checked));
+        console.log("settings removed");
+    }
+});
+
+
+localStorage.setItem("notification", "email");
+localStorage.setItem("profile", "public");
+localStorage.setItem("timezone", "option");
+
+//add event listeners to trigger local storage options
+
+
+//clear local storage after hitting the cancel button
 
 
 
