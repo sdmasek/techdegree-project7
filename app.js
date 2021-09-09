@@ -363,32 +363,20 @@ const switchPublicCheckbox = switchPublic.firstElementChild;
 const settingsChildren = settingsContainer.children;
 
 const settingsButtonContainer = document.querySelector(".settings-button");
+
 const saveButton = settingsContainer.querySelector("#save");
 const cancelButton = settingsContainer.querySelector("#cancel");
 
-// settingsContainer.addEventListener("change", (e) => {
-//     const saveCheckedEmail = switchEmailCheckbox;
-//     const setProfilePublic = switchPublicCheckbox;
+const selectTimezone = document.querySelector("#timezone");
+const timeZoneChildren = selectTimezone.children;
+const selectedOption = selectTimezone.options[selectTimezone.selectedIndex].value;
 
 
-//     if (switchEmailCheckbox.checked) {
-//         console.log("Switched to receive email notifications");
-//         localStorage.setItem("send email", JSON.stringify(saveCheckedEmail));
-//     } else {
-//         console.log("Email notifications turned off");
-//     }
-//     if (setProfilePublic.checked) {
-//         console.log("Switched profile to public");
-//         localStorage.setItem("set to public", JSON.stringify(setProfilePublic));
-//     } else {
-//         console.log("Profile set to private");
-//     }
-
-// });
 
 saveSettings = () => {
     localStorage.setItem("send email", JSON.stringify(switchEmailCheckbox.checked));
     localStorage.setItem("switch profile", JSON.stringify(switchPublicCheckbox.checked));
+
 
 }
 
@@ -408,6 +396,10 @@ settingsButtonContainer.addEventListener("click", (e) => {
             console.log("switched profile to public");
 
         }
+
+        localStorage.setItem("set timezone", JSON.stringify(selectedOption));
+        console.log("timezone set");
+
     } else {
         localStorage.removeItem("send email", JSON.stringify(switchEmailCheckbox.checked));
         localStorage.removeItem("switch profile", JSON.stringify(switchPublicCheckbox.checked));
@@ -415,15 +407,9 @@ settingsButtonContainer.addEventListener("click", (e) => {
     }
 });
 
-
-localStorage.setItem("notification", "email");
-localStorage.setItem("profile", "public");
-localStorage.setItem("timezone", "option");
-
-//add event listeners to trigger local storage options
-
-
-//clear local storage after hitting the cancel button
+window.document.onload = () => {
+    const getTimezone = JSON.parse(localStorage.getItem("set timezone"));
+};
 
 
 
