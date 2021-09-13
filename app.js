@@ -355,7 +355,7 @@ messageInput.addEventListener("keyup", (e) => {
 const settingsContainer = document.querySelector(".settings-container");
 
 const switchEmail = settingsContainer.querySelector("#switch-email");
-const switchEmailCheckbox = switchEmail.firstElementChild;
+let switchEmailCheckbox = switchEmail.firstElementChild;
 
 const switchPublic = settingsContainer.querySelector("#switch-public");
 const switchPublicCheckbox = switchPublic.firstElementChild;
@@ -369,7 +369,9 @@ const cancelButton = settingsContainer.querySelector("#cancel");
 
 const selectTimezone = document.querySelector("#timezone");
 const timeZoneChildren = selectTimezone.children;
-const selectedOption = selectTimezone.options[selectTimezone.selectedIndex].value;
+//get the text content of each option tag
+let timeZoneText = selectTimezone.querySelector("option").textContent;
+
 
 
 
@@ -384,32 +386,60 @@ saveSettings = () => {
 //local storage changes
 
 //create key value pairs for notification and timezone settings
+
 settingsButtonContainer.addEventListener("click", (e) => {
     const saveButton = settingsButtonContainer.firstElementChild;
     if (e.target === saveButton) {
         if (switchEmailCheckbox.checked) {
             localStorage.setItem("send email", JSON.stringify(switchEmailCheckbox.checked));
             console.log("switched to receive email notifications");
+            console.log(localStorage.getItem(switchEmailCheckbox.checked));
         }
         if (switchPublicCheckbox.checked) {
             localStorage.setItem("switch profile", JSON.stringify(switchPublicCheckbox.checked));
             console.log("switched profile to public");
 
+
         }
 
-        localStorage.setItem("set timezone", JSON.stringify(selectedOption));
+        localStorage.setItem("set timezone", JSON.stringify(selectTimezone.value));
+        console.log(selectTimezone.value);
         console.log("timezone set");
+
 
     } else {
         localStorage.removeItem("send email", JSON.stringify(switchEmailCheckbox.checked));
         localStorage.removeItem("switch profile", JSON.stringify(switchPublicCheckbox.checked));
+        switchEmailCheckbox.checked = false;
+        switchPublicCheckbox.checked = false;
         console.log("settings removed");
     }
 });
 
-window.document.onload = () => {
-    const getTimezone = JSON.parse(localStorage.getItem("set timezone"));
-};
+//have the checkboxes be toggled to persist if there's localstorage connected
+//to their values
+
+if (localStorage.getItem("send email")) {
+    switchEmailCheckbox.checked = true;
+    console.log("got value");
+}
+
+if (localStorage.getItem("switch profile")) {
+    switchPublicCheckbox.checked = true;
+}
+
+for (let i = 0; i < timeZoneChildren.length; i++) {
+    if (localStorage.getItem("set timezone")) {
+        let getTimeZone = localStorage.getItem("set timezone");
+        if (getTimeZone = timeZoneChildren[i].value) {
+            timeZoneChildren[i].textContent = timeZoneChildren[i].value;
+            console.log(timeZoneChildren[i]);
+        }
+
+    }
+}
+
+
 
 
 
