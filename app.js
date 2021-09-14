@@ -369,6 +369,10 @@ const cancelButton = settingsContainer.querySelector("#cancel");
 
 
 //get the text content of each option tag
+const selectTimezone = document.querySelector("#timezone");
+
+const timeZoneText = selectTimezone.querySelector("option");
+
 // let timeZoneText = selectTimezone.querySelector("option").textContent;
 
 
@@ -398,21 +402,16 @@ settingsButtonContainer.addEventListener("click", (e) => {
         }
 
 
-        const selectTimezone = document.querySelector("#timezone");
         // const timeZoneChildren = selectTimezone.options;
-        const timeZoneText = selectTimezone.querySelector("option");
-
+        // if (timeZoneText.value !== "select") {
         localStorage.setItem("set timezone", JSON.stringify(selectTimezone.value));
         console.log(selectTimezone.value);
         console.log("timezone set");
+        // }
 
 
-        if (localStorage.getItem("set timezone")) {
-
-            timeZoneText.textContent = selectTimezone.options[selectTimezone.options.selectedIndex].value;
 
 
-        }
 
 
 
@@ -431,8 +430,14 @@ settingsButtonContainer.addEventListener("click", (e) => {
     } else {
         localStorage.removeItem("send email", JSON.stringify(switchEmailCheckbox.checked));
         localStorage.removeItem("switch profile", JSON.stringify(switchPublicCheckbox.checked));
+        localStorage.removeItem("set timezone", JSON.stringify(selectTimezone.value));
         switchEmailCheckbox.checked = false;
         switchPublicCheckbox.checked = false;
+        if (!localStorage.getItem("set timezone")) {
+            selectTimezone.value = timeZoneText.textContent;
+            timeZoneText.textContent = "Select a Timezone";
+        }
+
         console.log("settings removed");
     }
 });
@@ -449,6 +454,10 @@ if (localStorage.getItem("send email")) {
 
 if (localStorage.getItem("switch profile")) {
     switchPublicCheckbox.checked = true;
+}
+
+if (localStorage.getItem("set timezone")) {
+    timeZoneText.textContent = JSON.parse(localStorage.getItem("set timezone"));
 }
 
 
