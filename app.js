@@ -367,20 +367,14 @@ const settingsButtonContainer = document.querySelector(".settings-button");
 const saveButton = settingsContainer.querySelector("#save");
 const cancelButton = settingsContainer.querySelector("#cancel");
 
-const selectTimezone = document.querySelector("#timezone");
-const timeZoneChildren = selectTimezone.children;
+
 //get the text content of each option tag
-let timeZoneText = selectTimezone.querySelector("option").textContent;
+// let timeZoneText = selectTimezone.querySelector("option").textContent;
 
 
 
 
-saveSettings = () => {
-    localStorage.setItem("send email", JSON.stringify(switchEmailCheckbox.checked));
-    localStorage.setItem("switch profile", JSON.stringify(switchPublicCheckbox.checked));
 
-
-}
 
 //when you click the save or cancel button, save or delete 
 //local storage changes
@@ -388,6 +382,7 @@ saveSettings = () => {
 //create key value pairs for notification and timezone settings
 
 settingsButtonContainer.addEventListener("click", (e) => {
+
     const saveButton = settingsButtonContainer.firstElementChild;
     if (e.target === saveButton) {
         if (switchEmailCheckbox.checked) {
@@ -402,9 +397,35 @@ settingsButtonContainer.addEventListener("click", (e) => {
 
         }
 
+
+        const selectTimezone = document.querySelector("#timezone");
+        // const timeZoneChildren = selectTimezone.options;
+        const timeZoneText = selectTimezone.querySelector("option");
+
         localStorage.setItem("set timezone", JSON.stringify(selectTimezone.value));
         console.log(selectTimezone.value);
         console.log("timezone set");
+
+
+        if (localStorage.getItem("set timezone")) {
+
+            timeZoneText.textContent = selectTimezone.options[selectTimezone.options.selectedIndex].value;
+
+
+        }
+
+
+
+
+
+        // for (let i = 0; i < timeZoneChildren.length; i++) {
+        //     if (localStorage.getItem("set timezone")) {
+        //         if (timeZoneChildren[i].value == "1")
+        //             // let getTimeZone = localStorage.getItem("set timezone");
+        //             timeZoneChildren[i].textContent = timeZoneChildren[i].text;
+
+        //     }
+        // }
 
 
     } else {
@@ -415,6 +436,8 @@ settingsButtonContainer.addEventListener("click", (e) => {
         console.log("settings removed");
     }
 });
+
+
 
 //have the checkboxes be toggled to persist if there's localstorage connected
 //to their values
@@ -428,16 +451,7 @@ if (localStorage.getItem("switch profile")) {
     switchPublicCheckbox.checked = true;
 }
 
-for (let i = 0; i < timeZoneChildren.length; i++) {
-    if (localStorage.getItem("set timezone")) {
-        let getTimeZone = localStorage.getItem("set timezone");
-        if (getTimeZone = timeZoneChildren[i].value) {
-            timeZoneChildren[i].textContent = timeZoneChildren[i].value;
-            console.log(timeZoneChildren[i]);
-        }
 
-    }
-}
 
 
 
