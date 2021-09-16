@@ -1,6 +1,7 @@
 
 .grid-container{
     display: grid;
+    overflow-x: hidden;
     font-family: 'Montserrat', sans-serif;
     grid-template-columns: 100%;
     grid-template-rows: auto;
@@ -16,6 +17,7 @@
     flex-direction: row;
     flex-wrap: nowrap;
     background-color: rgb(120, 101, 189);
+    
 }
 
 .nav{
@@ -100,7 +102,7 @@ sup{
 .notifs-content-dropdown{
     display: none;
     position: absolute;
-    background-color: none;
+    /* background-color: none; */
     min-width: 4rem;
     z-index: 3;
     width: 200px;
@@ -516,7 +518,7 @@ input[type="search"]{
   }
 @media screen and (min-width: 768px){
     .grid-container{
-        grid-template-columns: 55px 1fr;
+        grid-template-columns: 5% 95%;
         grid-template-areas: 
                 "header header"
                 "nav main";
@@ -537,26 +539,36 @@ input[type="search"]{
     }
     .traffic{
         grid-area: traffic;
+        max-width: 90%;
     }
     .dash{
         grid-area: dash;
+        max-width: 90%;
     }
     .social{
         grid-area: social;
+        max-width: 90%;
     }
     #daily{
         grid-area: daily;
+        max-width: 45%;
+
     
     }
     .user-devices{
         grid-area: devices;
+        max-width: 45%;
+        
     
     }
     #members-profile{
         grid-area: members;
+        max-width: 90%;
     }
     .members-activity{
         grid-area: activity;
+        max-width: 90%;
+
     }
     .message{
         grid-area: message;
@@ -608,6 +620,7 @@ input[type="search"]{
         flex-direction: column;
         padding: 0;
         justify-content:flex-start;
+        align-items: center;
     }
 
     .traffic-header{
@@ -629,7 +642,7 @@ input[type="search"]{
         margin: 1rem;
     }
     .widget-container-half{
-        width: 45vw;
+        width: 40vw;
         height: 30vh;
         /* padding: 1em; */
     }
@@ -666,7 +679,7 @@ input[type="search"]{
         flex-direction: row;
         text-align: left;
         margin: .5em;
-        width: 100%;
+        width: 90%;
     }
     .member{
         justify-content: space-between;

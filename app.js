@@ -322,8 +322,21 @@ createUserList = (names) => {
         messageForm.removeChild(userDiv);
     }
 
-
 }
+
+const documentBody = document.querySelector("body");
+
+document.addEventListener("click", (e) => {
+    if (messageForm.contains(userDiv)) {
+        if (e.target = documentBody) {
+            // userDiv.style.display = "none";
+            messageForm.removeChild(userDiv);
+            userLi.textContent = "";
+
+        }
+    }
+
+});
 
 
 //create an automatic search for the message field
@@ -342,6 +355,9 @@ messageInput.addEventListener("keyup", (e) => {
     }
 
 });
+
+
+
 
 //further things to do:
 //-Create a function that creates and appends a div that lists
@@ -431,12 +447,14 @@ settingsButtonContainer.addEventListener("click", (e) => {
         localStorage.removeItem("send email", JSON.stringify(switchEmailCheckbox.checked));
         localStorage.removeItem("switch profile", JSON.stringify(switchPublicCheckbox.checked));
         localStorage.removeItem("set timezone", JSON.stringify(selectTimezone.value));
+
         switchEmailCheckbox.checked = false;
         switchPublicCheckbox.checked = false;
-        if (!localStorage.getItem("set timezone")) {
-            selectTimezone.value = timeZoneText.textContent;
-            timeZoneText.textContent = "Select a Timezone";
-        }
+
+        timeZoneText.textContent = "Select a Timezone";
+        selectTimezone.value = timeZoneText.textContent;
+
+
 
         console.log("settings removed");
     }
