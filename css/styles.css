@@ -368,6 +368,10 @@ input[type="search"]{
     border-radius: 10px;
     border: 1px solid rgb(201, 196, 196);
 }
+
+.button-primary, .button-disabled:hover{
+    cursor: pointer;
+}
 /* toggle switch code taken from W3C */
 
 .switch {
@@ -539,36 +543,35 @@ input[type="search"]{
     }
     .traffic{
         grid-area: traffic;
-        max-width: 90%;
+        /* max-width: 90%; */
     }
     .dash{
         grid-area: dash;
-        max-width: 90%;
+        /* max-width: 90%; */
     }
     .social{
         grid-area: social;
-        max-width: 90%;
+        /* max-width: 90%; */
     }
     #daily{
         grid-area: daily;
-        max-width: 45%;
-
-    
+       
     }
     .user-devices{
         grid-area: devices;
-        max-width: 45%;
         
-    
     }
     #members-profile{
         grid-area: members;
-        max-width: 90%;
+        
     }
     .members-activity{
         grid-area: activity;
-        max-width: 90%;
 
+    }
+
+    .members-activity h3, #members-profile h3{
+        margin: 1em 0 0 1em;
     }
     .message{
         grid-area: message;
@@ -673,13 +676,14 @@ input[type="search"]{
     }
     .social h3{
         flex: 1 100%;
+        margin-left: 1.5em;
     }
     .member, .activity{
         display: flex;
         flex-direction: row;
         text-align: left;
         margin: .5em;
-        width: 90%;
+      
     }
     .member{
         justify-content: space-between;
@@ -706,9 +710,7 @@ input[type="search"]{
         max-width: 100%;
         margin: auto .5em;
     }
-    .members-activity h3{
-        border-top: 1px solid rgb(201, 196, 196);
-    }
+    
     .time{
         margin-top: 0;
     }
@@ -796,9 +798,9 @@ input[type="search"]{
      .settings-button{
          display: flex;
          flex-direction: row;
-         margin-top: 1em;
+         /* margin-top: 1em; */
          position: absolute;
-         bottom: .20em;
+         bottom: 1em;
      }
      .settings-container{
          width: 100%;
