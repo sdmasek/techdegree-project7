@@ -324,14 +324,16 @@ createUserList = (names) => {
 
 }
 
+
+//take away the div element by clicking anywhere on the page
 const documentBody = document.querySelector("body");
 
 document.addEventListener("click", (e) => {
     if (messageForm.contains(userDiv)) {
+        messageInput.value = userDiv.textContent;
         if (e.target = documentBody) {
-            // userDiv.style.display = "none";
             messageForm.removeChild(userDiv);
-            userLi.textContent = "";
+
 
         }
     }
@@ -340,7 +342,6 @@ document.addEventListener("click", (e) => {
 
 
 //create an automatic search for the message field
-
 
 messageInput.addEventListener("keyup", (e) => {
 
@@ -359,12 +360,7 @@ messageInput.addEventListener("keyup", (e) => {
 
 
 
-//further things to do:
-//-Create a function that creates and appends a div that lists
-//all the names that match what you type in
-//add the function to the event listener
-//create another event listener tied to the document that closes
-//the div anytime you click outside the document
+
 
 //create local storage for the email notifications, setting the
 //profile to public, and timezone selection
@@ -399,8 +395,6 @@ const timeZoneText = selectTimezone.querySelector("option");
 //when you click the save or cancel button, save or delete 
 //local storage changes
 
-//create key value pairs for notification and timezone settings
-
 settingsButtonContainer.addEventListener("click", (e) => {
 
     const saveButton = settingsButtonContainer.firstElementChild;
@@ -418,29 +412,13 @@ settingsButtonContainer.addEventListener("click", (e) => {
         }
 
 
-        // const timeZoneChildren = selectTimezone.options;
-        // if (timeZoneText.value !== "select") {
+
         localStorage.setItem("set timezone", JSON.stringify(selectTimezone.value));
         console.log(selectTimezone.value);
         console.log("timezone set");
-        // }
 
 
 
-
-
-
-
-
-
-        // for (let i = 0; i < timeZoneChildren.length; i++) {
-        //     if (localStorage.getItem("set timezone")) {
-        //         if (timeZoneChildren[i].value == "1")
-        //             // let getTimeZone = localStorage.getItem("set timezone");
-        //             timeZoneChildren[i].textContent = timeZoneChildren[i].text;
-
-        //     }
-        // }
 
 
     } else {
